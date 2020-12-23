@@ -1,0 +1,218 @@
+# stackbit.yaml - https://www.stackbit.com/docs/stackbit-yaml/
+
+stackbitVersion: ~0.3.0
+ssgName: hugo
+
+dataDir: data
+pagesDir: content
+
+assets:
+  referenceType: relative
+  assetsDir: content
+  uploadDir: images
+
+logicFields:
+  - config.paginate
+  - post.date
+  - post.weight
+  - post.categories
+  - post.series
+  - post.tags
+  - post.aliases
+
+models:
+  config:
+    type: config
+    label: Site Config
+    fields:
+      - type: string
+        name: title
+        label: Site Title
+      - type: number
+        name: paginate
+      - type: boolean
+        name: buildDrafts
+      - type: object
+        name: params
+        fields:
+          - type: string
+            name: description
+            label: Meta Description
+            description: Site description
+          - type: list
+            name: author
+            label: Authors
+            description: List of authors
+            items:
+              type: string
+            default: ["Hugo Authors"]
+          - type: enum
+            name: defaultTheme
+            options:
+              - auto
+              - light
+              - dark
+          - type: boolean
+            name: ShowReadingTime
+          - type: boolean
+            name: ShowShareButtons
+          - type: boolean
+            name: disableThemeToggle
+          - type: boolean
+            name: disableSpecial1stPost
+          - type: object
+            name: homeInfoParams
+            label: Home Info
+            fields:
+              - type: string
+                name: Title
+              - type: markdown
+                name: Content
+          - type: list
+            name: socialIcons
+            items:
+              type: object
+              labelField: name
+              fields:
+                - type: enum
+                  name: name
+                  options: ['123rf', 'adobestock', 'behance', 'buymeacoffee', 'codepen', 'cryptohack', 'dev', 'discogs', 'discord', 'dreamstime', 'dribbble', 'email', 'facebook', 'freepik', 'github', 'gitlab', 'hackerrank', 'hackthebox', 'instagram', 'kakaotalk', 'keybase', 'kofi', 'lastfm', 'linkedin', 'mastodon', 'medium', 'mixcloud', 'paypal', 'qq', 'rss', 'soundcloud', 'shutterstock', 'slack', 'sourcerer', 'stackoverflow', 'steam', 'telegram', 'twitch', 'twitter', 'youtube', 'other']
+                - type: string
+                  name: url
+  search:
+    type: page
+    label: Search
+    file: search.md
+    hideContent: true
+    fields:
+      - type: string
+        name: title
+      - type: string
+        name: layout
+        required: true
+        const: search
+        hidden: true
+  archive:
+    type: page
+    label: Archive
+    file: archives.md
+    hideContent: true
+    fields:
+      - type: string
+        name: title
+      - type: string
+        name: layout
+        required: true
+        const: archives
+        hidden: true
+      - type: slug
+        name: url
+      - type: string
+        name: summary
+  post:
+    type: page
+    label: Post
+    folder: posts
+    exclude: "*/_index.md"
+    urlPath: "posts/{slug}"
+    fields:
+      - type: string
+        name: title
+        label: Post Title
+        default: Post Title
+      - type: date
+        name: date
+        label: Publish Date
+      - type: list
+        name: author
+        label: Authors
+        description: List of authors
+        items:
+          type: string
+        default: ["Hugo Authors"]
+      - type: string
+        name: description
+        label: Meta Description
+        default: ""
+      - type: string
+        name: summary
+        label: Post Summary
+        description: Post summary shown in the posts list
+      - type: number
+        name: weight
+        label: Weight
+        description: Set to pin the post to the top of the posts list
+      - type: list
+        name: tags
+        items:
+          type: string
+      - type: list
+        name: categories
+        items:
+          type: string
+      - type: list
+        name: series
+        items:
+          type: string
+      - type: list
+        name: aliases
+        items:
+          type: slug
+      - type: boolean
+        name: ShowToc
+        label: Show TOC
+        description: Show/hide Table of Contents
+      - type: boolean
+        name: TocOpen
+        label: TOC Open
+        description: Open Table of Contents by default on page load
+      - type: boolean
+        name: draft
+      - type: boolean
+        name: hideMeta
+        description: "Hide meta elements: date, read-time, author and available-translations for page"
+      - type: boolean
+        name: disableShare
+        label: Disable Share
+        description: Show/hide share icons under a page
+      - type: boolean
+        name: comments
+        label: Show Comments
+        description: Show/hide comments
+      - type: boolean
+        name: math
+        label: Math Typesetting
+        description: Enable/disable math typesetting
+      - type: object
+        name: cover
+        fields:
+          - type: image
+            name: image
+            label: Cover Image
+            default: ""
+          - type: string
+            name: alt
+            label: image alternative text
+            description: Alternative text to show if image doesn’t load/show up
+            default: Alternative text
+          - type: string
+            name: caption
+            label: Image Caption
+            description: Caption for cover image
+            default: image caption
+          - type: boolean
+            name: relative
+            label: Relative Image Path
+            description: Use relative path for cover image, used in hugo Page-bundles
+  post_section:
+    type: page
+    label: Post Section
+    folder: posts
+    match: "*/_index.md"
+    urlPath: "posts/{slug}"
+    filePath: "posts/{slug}/_index.md"
+    fields:
+      - type: string
+        name: title
+      - type: string
+        name: summary

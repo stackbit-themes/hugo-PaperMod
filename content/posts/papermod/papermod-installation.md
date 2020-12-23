@@ -6,8 +6,8 @@ series: ["PaperMod"]
 weight: 1
 aliases: ["/papermod-installation"]
 tags: ["PaperMod"]
-author: "Aditya Telange"
-showToc: true
+author: ["Aditya Telange"]
+ShowToc: true
 TocOpen: true
 ---
 

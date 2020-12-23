@@ -2,11 +2,11 @@
 title: "Papermod - How To's Guide"
 summary: FAQs
 date: 2020-09-18T11:30:03+05:30
-showtoc: true
-tocOpen: true
+ShowToc: true
+TocOpen: true
 aliases: ["/papermod-how-to-guide"]
 tags: ["PaperMod"]
-author: "Aditya Telange"
+author: ["Aditya Telange"]
 draft: true
 aliases: [/posts/papermod/papermod-how-to]
 ---

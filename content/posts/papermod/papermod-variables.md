@@ -2,10 +2,10 @@
 title: "Papermod - Variables"
 summary: List of Front Matter variables used by PaperMod
 date: 2020-09-24T11:33:33+05:30
-showToc: true
+ShowToc: true
 TocOpen: true
 tags: ["PaperMod"]
-author: "Aditya Telange"
+author: ["Aditya Telange"]
 draft: true
 ---
 
